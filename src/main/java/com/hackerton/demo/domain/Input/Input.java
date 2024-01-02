@@ -1,6 +1,8 @@
-package com.hackerton.demo.domain;
+package com.hackerton.demo.domain.Input;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
@@ -15,7 +17,8 @@ import org.hibernate.annotations.DynamicUpdate;
 @AllArgsConstructor
 public class Input {
 
-    @Id
+    @Id @GeneratedValue
+    @Column(name = "input_id")
     private Long id;
 
     private String content;

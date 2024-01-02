@@ -1,6 +1,6 @@
 package com.hackerton.demo.domain.mapping;
 
-import com.hackerton.demo.domain.Result;
+import com.hackerton.demo.domain.Result.Result;
 import com.hackerton.demo.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,6 +14,7 @@ public class Keyword extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "keyword_id")
     private Long id;
 
     private String title;
