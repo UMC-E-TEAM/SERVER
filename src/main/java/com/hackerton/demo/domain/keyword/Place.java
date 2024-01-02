@@ -1,5 +1,6 @@
 package com.hackerton.demo.domain.keyword;
 
+import com.hackerton.demo.domain.User.User;
 import com.hackerton.demo.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,4 +18,8 @@ public class Place extends BaseEntity {
     private Long id;
 
     private String placeName;
+
+    @JoinColumn(name = "user_id")
+    @ManyToOne
+    private User user;
 }
