@@ -20,10 +20,5 @@ spring:
       enabled: true
       max-file-size: 200MB
       max-request-size: 300MB
-server:
-  port: 8080
-logging:
-  level:
-    org.springframework.data: DEBUG
 chatgpt:
   key: ${GPT_SECRET}
