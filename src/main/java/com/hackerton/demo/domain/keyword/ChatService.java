@@ -1,7 +1,10 @@
 package com.hackerton.demo.domain.keyword;
 
+import com.hackerton.demo.domain.User.User;
+import com.hackerton.demo.domain.User.UserRepository;
 import com.theokanning.openai.completion.chat.ChatCompletionChoice;
 import com.theokanning.openai.service.OpenAiService;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -25,8 +28,9 @@ public class ChatService {
     private final KeywordRespository keywordRespository;
 
     private final PlaceRepository placeRepository;
+    private final UserRepository userRepository;
 
-    public List<KeywordDto> createGptComment(String content) {
+    public List<KeywordDto> createGptComment(String content, Long userId) {
         this.openAiService = new OpenAiService(apiKey, Duration.ofSeconds(20));
         String prompt = content + "대신 딱 10개만 아무런 부가 설명 없이 키워드만 알려줘.";
 
@@ -41,10 +45,10 @@ public class ChatService {
         ChatCompletionChoice chatCompletionResult = openAiService.createChatCompletion(requester).getChoices().get(0);
         String contentResult = chatCompletionResult.getMessage().getContent();
 
-        return extractKeywords(contentResult);
+        return extractKeywords(contentResult, userId);
     }
 
-    private List<KeywordDto> extractKeywords(String content) {
+    private List<KeywordDto> extractKeywords(String content, Long userId) {
         List<KeywordDto> keywordDtos = new ArrayList<>();
 
         // 개행 문자로 분할하여 리스트로 변환
@@ -56,16 +60,18 @@ public class ChatService {
             keywordDtos.add(keywordDto);
         }
 
-        List<Keyword> keywords = keywordRespository.saveAll(convertToKeywords(keywordDtos));
+        List<Keyword> keywords = keywordRespository.saveAll(convertToKeywords(keywordDtos, userId));
 
         return convertToKeywordDtos(keywords);
     }
 
-    private List<Keyword> convertToKeywords(List<KeywordDto> keywordDtos) {
+    private List<Keyword> convertToKeywords(List<KeywordDto> keywordDtos, Long userId) {
+        User user = userRepository.getReferenceById(userId);
         List<Keyword> keywords = new ArrayList<>();
         for (KeywordDto dto : keywordDtos) {
             Keyword keyword = new Keyword();
             keyword.setOptionTitle(dto.getOptionTitle());
+            keyword.setUser(user);
             keywords.add(keyword);
         }
         return keywords;
@@ -136,6 +142,15 @@ public class ChatService {
             placeDtos.add(dto);
         }
         return placeDtos;
+    }
+
+    public List<KeywordDto> getKeywordList(Long userId) {
+        List<Keyword> keywords = keywordRespository.findAllByUserId(userId);
+        List<KeywordDto> keywordDtos = keywords.stream()
+                .map(keyword -> new KeywordDto(keyword.getOptionTitle()))
+                .collect(Collectors.toList());
+
+        return keywordDtos;
     }
 
 }
