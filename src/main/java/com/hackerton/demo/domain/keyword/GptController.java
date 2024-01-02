@@ -18,13 +18,13 @@ import java.util.List;
 public class GptController {
     private final ChatService chatService;
 
-    @GetMapping("/result")
-    @Operation(summary = "음성인식/텍스트 ChatGPT로 전달하여 키워드 추출", description = "음성인식/텍스트를 통해 ChatGPT 검색을 실행합니다. " + "검색 결과를 List로 반환하여 Keyword에 저장합니다.")
+    @GetMapping("/result/{userId}")
+    @Operation(summary = "음성인식/텍스트 ChatGPT로 전달하여 키워드 추출", description = "음성인식/텍스트를 통해 ChatGPT 검색을 실행합니다. " + "검색 결과를 List로 반환하여 Keyword와 pathvariable을 저장합니다.")
     @ApiResponses({
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "GET_SUCCESS", description = "조회 성공"),
     })
-    public ResponseEntity<ApiResponse<List<KeywordDto>>> createGptComment(@RequestParam String content) {
-        List<KeywordDto> keywordDtos = chatService.createGptComment(content);
+    public ResponseEntity<ApiResponse<List<KeywordDto>>> createGptComment(@RequestParam(name = "content") String content, @PathVariable(name = "userId")Long userId) {
+        List<KeywordDto> keywordDtos = chatService.createGptComment(content, userId);
         ApiResponse<List<KeywordDto>> apiResponse = new ApiResponse<>(ApiResponseStatus.GET_SUCCESS, keywordDtos);
         return ResponseEntity.ok(apiResponse);
     }
