@@ -1,9 +1,20 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/study?createDatabaseIfNotExist=true
+    url: jdbc:mysql://umc-db.clum6u48wd0b.ap-northeast-2.rds.amazonaws.com/umc
     username: root
-    password: 00000819
+    password: umcteame
     driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        hbm2ddl:
+          auto: update
+        default_batch_fetch_size: 1000
+
 
 
 server:

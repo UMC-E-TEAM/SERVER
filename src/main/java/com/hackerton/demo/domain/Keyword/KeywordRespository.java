@@ -1,4 +1,4 @@
-package com.hackerton.demo.domain.mapping;
+package com.hackerton.demo.domain.Keyword;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
