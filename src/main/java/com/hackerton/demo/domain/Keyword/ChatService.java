@@ -1,8 +1,5 @@
 package com.hackerton.demo.domain.Keyword;
 
-import com.hackerton.demo.domain.Keyword.Keyword;
-import com.hackerton.demo.domain.Keyword.KeywordDto;
-import com.hackerton.demo.domain.Keyword.KeywordRespository;
 import com.theokanning.openai.completion.chat.ChatCompletionChoice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,6 +9,7 @@ import com.theokanning.openai.completion.chat.ChatMessage;
 import com.theokanning.openai.service.OpenAiService;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +31,7 @@ public class ChatService {
         ChatCompletionRequest requester = ChatCompletionRequest.builder()
                 .model(MODEL)
                 .maxTokens(2048)
+                .temperature(1.0)
                 .messages(List.of(
                         new ChatMessage("user", prompt)
                 )).build();
@@ -65,8 +64,6 @@ public class ChatService {
         for (KeywordDto dto : keywordDtos) {
             Keyword keyword = new Keyword();
             keyword.setOptionTitle(dto.getOptionTitle());
-            keyword.getCreatedAt();
-            keyword.getUpdatedAt();
             keywords.add(keyword);
         }
         return keywords;
