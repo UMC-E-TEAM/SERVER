@@ -14,7 +14,7 @@ public class InfoService {
 
     public InfoDto getHome() {
         Random random = new Random();
-        long randomNumber = random.nextLong(2)+1;
+        long randomNumber = random.nextLong(14)+1;
 
         Info info = infoRepository.getReferenceById(randomNumber);
 

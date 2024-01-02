@@ -55,10 +55,8 @@ public class ChatService {
             keywordDtos.add(keywordDto);
         }
 
-        // KeywordDto를 Keyword 엔티티로 변환 후 저장
         List<Keyword> keywords = keywordRespository.saveAll(convertToKeywords(keywordDtos));
 
-        // 저장된 Keyword 엔티티를 다시 KeywordDto로 변환하여 반환
         return convertToKeywordDtos(keywords);
     }
 
