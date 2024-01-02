@@ -2,6 +2,7 @@ package com.hackerton.demo.domain.User;
 
 import com.hackerton.demo.domain.common.BaseEntity;
 import com.hackerton.demo.domain.keyword.Keyword;
+import com.hackerton.demo.domain.keyword.Place;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,4 +35,7 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Keyword> keywordList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Place> places = new ArrayList<>();
 }

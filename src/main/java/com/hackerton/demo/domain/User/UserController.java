@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping("/sign-ip")
+    @PostMapping("/sign-in")
     @Operation(summary = "기본 회원가입 API", description = "닉네임을 입력받아 회원가입을 진행합니다.")
     @ApiResponses({
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "SIGN_IN_SUCCESS", description = "로그인 성공"),

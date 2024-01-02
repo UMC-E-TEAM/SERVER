@@ -88,7 +88,7 @@ public class ChatService {
         return keywordDtos;
     }
 
-    public List<PlaceDto> createGptPlace(String content) {
+    public List<PlaceDto> createGptPlace(String content, Long userId) {
         this.openAiService = new OpenAiService(apiKey, Duration.ofSeconds(20));
         String prompt = content + "를 할 수 있는 대한민국에 있는 장소 5개만 부가 설명 없이 장소명만 알려줘. 장소명 말고 다른 설명은 필요 없어.";
 
@@ -103,10 +103,10 @@ public class ChatService {
         ChatCompletionChoice chatCompletionResult = openAiService.createChatCompletion(requester).getChoices().get(0);
         String contentResult = chatCompletionResult.getMessage().getContent();
 
-        return extractPlaces(contentResult);
+        return extractPlaces(contentResult, userId);
     }
 
-    private List<PlaceDto> extractPlaces(String content) {
+    private List<PlaceDto> extractPlaces(String content, Long userId) {
         List<PlaceDto> placeDtos = new ArrayList<>();
 
         // 개행 문자로 분할하여 리스트로 변환
@@ -114,20 +114,24 @@ public class ChatService {
 
         for (String placeName : placeArray) {
             String cleanName = placeName.replaceAll("\\d+\\.\\s*", "");
-            PlaceDto placeDto = PlaceDto.builder().placeName(cleanName).build();
+            PlaceDto placeDto = PlaceDto.builder()
+                    .placeName(cleanName)
+                    .build();
             placeDtos.add(placeDto);
         }
 
-        List<Place> places = placeRepository.saveAll(convertToPlace(placeDtos));
+        List<Place> places = placeRepository.saveAll(convertToPlace(placeDtos, userId));
 
         return convertToPlaceDtos(places);
     }
 
-    private List<Place> convertToPlace(List<PlaceDto> placeDtos) {
+    private List<Place> convertToPlace(List<PlaceDto> placeDtos, Long userId) {
+        User user = userRepository.getReferenceById(userId);
         List<Place> places = new ArrayList<>();
         for (PlaceDto dto : placeDtos) {
             Place place = new Place();
             place.setPlaceName(dto.getPlaceName());
+            place.setUser(user);
             places.add(place);
         }
         return places;

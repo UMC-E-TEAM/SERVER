@@ -29,13 +29,13 @@ public class GptController {
         return ResponseEntity.ok(apiResponse);
     }
 
-    @GetMapping("/result/place")
+    @GetMapping("/result/place/{userId}")
     @Operation(summary = "선택된 키워드와 관련된 장소 추천", description = "키워드와 관련된 장소를 추천합니다.")
     @ApiResponses({
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "GET_SUCCESS", description = "조회 성공"),
     })
-    public ResponseEntity<ApiResponse<List<PlaceDto>>> createGptPlace(@RequestParam String content) {
-        List<PlaceDto> placeDtos = chatService.createGptPlace(content);
+    public ResponseEntity<ApiResponse<List<PlaceDto>>> createGptPlace(@RequestParam(name = "content") String content, @PathVariable(name = "userId")Long userId) {
+        List<PlaceDto> placeDtos = chatService.createGptPlace(content, userId);
         ApiResponse<List<PlaceDto>> apiResponse = new ApiResponse<>(ApiResponseStatus.GET_SUCCESS, placeDtos);
         return ResponseEntity.ok(apiResponse);
     }
