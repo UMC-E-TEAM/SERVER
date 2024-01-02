@@ -1,6 +1,5 @@
-package com.hackerton.demo.domain.Keyword;
+package com.hackerton.demo.domain.keyword;
 
-import com.hackerton.demo.domain.User.User;
 import com.hackerton.demo.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,19 +9,12 @@ import lombok.*;
 @Setter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-
 @AllArgsConstructor
-public class Keyword extends BaseEntity {
-
+public class Place extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "keyword_id")
+    @Column(name = "place_id")
     private Long id;
 
-    private String optionTitle;
-
-    @JoinColumn(name = "user_id")
-    @ManyToOne
-    private User user;
-
+    private String placeName;
 }

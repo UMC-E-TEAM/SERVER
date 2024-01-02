@@ -1,11 +1,9 @@
-package com.hackerton.demo.domain.Keyword;
+package com.hackerton.demo.domain.keyword;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Builder
 @Getter

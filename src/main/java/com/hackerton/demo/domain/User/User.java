@@ -1,7 +1,7 @@
 package com.hackerton.demo.domain.User;
 
-import com.hackerton.demo.domain.Keyword.Keyword;
 import com.hackerton.demo.domain.common.BaseEntity;
+import com.hackerton.demo.domain.keyword.Keyword;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
