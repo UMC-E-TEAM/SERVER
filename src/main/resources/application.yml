@@ -1,12 +1,16 @@
 spring:
   datasource:
-    url: jdbc:mysql://mydb.clz02g0uqvzz.ap-northeast-2.rds.amazonaws.com/joo2study
+    url: jdbc:mysql://localhost:3306/study?createDatabaseIfNotExist=true
     username: root
-    password: 20190976sswu
+    password: 00000819
     driver-class-name: com.mysql.cj.jdbc.Driver
+
 
 server:
   port: 8080
 logging:
   level:
     org.springframework.data: DEBUG
+
+chatgpt:
+  key: ${GPT_SECRET}
