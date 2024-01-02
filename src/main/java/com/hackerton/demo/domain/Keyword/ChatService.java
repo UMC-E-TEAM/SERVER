@@ -31,7 +31,7 @@ public class ChatService {
         ChatCompletionRequest requester = ChatCompletionRequest.builder()
                 .model(MODEL)
                 .maxTokens(2048)
-                .temperature(1.0)
+                .temperature(0.8)
                 .messages(List.of(
                         new ChatMessage("user", prompt)
                 )).build();
