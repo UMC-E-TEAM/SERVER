@@ -1,7 +1,6 @@
-package com.hackerton.demo.controller;
+package com.hackerton.demo.domain.Result;
 
 import com.hackerton.demo.domain.mapping.Keyword;
-import com.hackerton.demo.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

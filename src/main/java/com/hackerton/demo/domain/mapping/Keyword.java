@@ -10,6 +10,7 @@ import lombok.*;
 @Setter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
+
 @AllArgsConstructor
 public class Keyword extends BaseEntity {
 
@@ -19,7 +20,6 @@ public class Keyword extends BaseEntity {
     private Long id;
 
     private String option;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "result_id")
     private Result result;

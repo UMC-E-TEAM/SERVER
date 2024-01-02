@@ -1,4 +1,4 @@
-package com.hackerton.demo.service;
+package com.hackerton.demo.domain.Result;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
