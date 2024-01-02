@@ -23,6 +23,6 @@ public class Result {
     @Column(name = "result_id")
     private Long id;
 
-    @OneToMany(mappedBy = "keyword", cascade = CascadeType.ALL)     // keyword 양방향 매핑
+    @OneToMany(mappedBy = "result", cascade = CascadeType.ALL)     // keyword 양방향 매핑
     private List<Keyword> keywords = new ArrayList<>();
 }

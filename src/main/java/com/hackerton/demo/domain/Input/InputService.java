@@ -13,10 +13,10 @@ public class InputService {
 
     private final InputRepository inputRepository;  // InputRespository 자동 주입
 
-    public InputDto saveInputSearch(InputDto inputDto){
-
-        Input input = inputRepository.findOne
-
-    }
+//    public InputDto saveInputSearch(InputDto inputDto){
+//
+//        Input input = inputRepository.findOne
+//
+//    }
 
 }

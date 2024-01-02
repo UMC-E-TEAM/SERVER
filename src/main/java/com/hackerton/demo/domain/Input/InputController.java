@@ -21,11 +21,11 @@ public class InputController {
     private final InputService inputService;
 
     // 사용자 질문 생성
-    @PostMapping("/search")
-    public ResponseEntity<ApiResponse<InputDto>> getInputSearch(@RequestBody InputDto inputDto){
-
-        ApiResponse<InputDto> successResponse = new ApiResponse<>(SEARCH_SUCCESS, inputService.saveInputSearch(inputDto));
-
-        return ResponseEntity.status(OK).body(successResponse);
-    }
+//    @PostMapping("/search")
+//    public ResponseEntity<ApiResponse<InputDto>> getInputSearch(@RequestBody InputDto inputDto){
+//
+//        ApiResponse<InputDto> successResponse = new ApiResponse<>(SEARCH_SUCCESS, inputService.saveInputSearch(inputDto));
+//
+//        return ResponseEntity.status(OK).body(successResponse);
+//    }
 }
