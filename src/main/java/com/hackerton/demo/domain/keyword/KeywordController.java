@@ -22,8 +22,7 @@ public class KeywordController {
     private final ChatService chatService;
 
     @GetMapping("/{userId}")
-    @Operation(summary = "해당 유저의 오늘의 키워드 조회 ", description = "pathvariable로 들어오는 유저의 키워드를 조회합니다."
-            + "토큰 미구현으로 1~6번 인덱스 유저 조회 가능.")
+    @Operation(summary = "해당 유저의 오늘의 키워드 조회 ", description = "pathvariable로 들어오는 유저의 키워드를 조회합니다.")
     @ApiResponses({
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "GET_SUCCESS", description = "조회 성공"),
     })
