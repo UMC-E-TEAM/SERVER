@@ -1,6 +1,5 @@
-package com.hackerton.demo.domain.mapping;
+package com.hackerton.demo.domain.Keyword;
 
-import com.hackerton.demo.domain.Result.Result;
 import com.hackerton.demo.domain.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,8 +18,5 @@ public class Keyword extends BaseEntity {
     @Column(name = "keyword_id")
     private Long id;
 
-    private String option;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "result_id")
-    private Result result;
+    private String optionTitle;
 }

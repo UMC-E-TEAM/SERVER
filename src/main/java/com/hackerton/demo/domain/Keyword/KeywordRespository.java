@@ -1,8 +1,8 @@
-package com.hackerton.demo.domain.Result;
+package com.hackerton.demo.domain.Keyword;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ResultRepository extends JpaRepository<Result, Long> {
+public interface KeywordRespository extends JpaRepository<Keyword, Long> {
 }
