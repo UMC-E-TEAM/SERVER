@@ -5,8 +5,11 @@ spring:
     password: 20190976sswu
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+
 server:
   port: 8080
 logging:
   level:
     org.springframework.data: DEBUG
+chatgpt:
+  key: ${GPT_SECRET}
