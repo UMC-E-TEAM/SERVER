@@ -2,10 +2,6 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.1'
 	id 'io.spring.dependency-management' version '1.1.4'
-<<<<<<< HEAD
-=======
-
->>>>>>> 196b025d2b00411a3c1a4f27d979fbf63eec5f35
 }
 
 group = 'com.hackerton'

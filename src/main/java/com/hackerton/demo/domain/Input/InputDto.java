@@ -6,8 +6,5 @@ import lombok.Getter;
 @Builder
 @Getter
 public class InputDto {
-
-    private Long id;
-
     private String content;
 }

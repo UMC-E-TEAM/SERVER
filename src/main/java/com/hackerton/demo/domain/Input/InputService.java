@@ -17,7 +17,6 @@ public class InputService {
     public void saveInputSearch(InputDto inputDto){
 
         Input input = Input.builder()
-                .id(inputDto.getId())
                 .content(inputDto.getContent())
                 .build();
 
